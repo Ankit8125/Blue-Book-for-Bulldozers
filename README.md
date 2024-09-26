@@ -1,5 +1,5 @@
 # Bulldozer Price Prediction
-This project aims to predict the auction sale price of heavy equipment (e.g., bulldozers) based on historical data. The notebook walks through the steps of loading the data, exploratory data analysis (EDA), building machine learning models, and evaluating their performance.
+This project aims to predict the auction sale price of heavy equipment (e.g., bulldozers) based on historical data. The notebook walks through the end-to-end workflow of loading the data, performing exploratory data analysis (EDA), building machine learning models, and evaluating their performance using key regression metrics.
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -10,15 +10,22 @@ This project aims to predict the auction sale price of heavy equipment (e.g., bu
 6. [Evaluation](#evaluation)
 
 ## Project Overview
-The objective of this project is to predict the auction sale price of bulldozers and other heavy equipment using machine learning algorithms. The following approach is used:
+The objective of this project is to predict the auction sale price of bulldozers and other heavy machinery at auction using machine learning algorithms. The following approach is used:
 
 1. **Problem Definition**: 
-   - Given historical auction data for bulldozers and other heavy machinery, can we predict the sale price of a particular machine?
+   - Can we predict the future sale price of a bulldozer given its features, historical data, and auction information? This problem is a regression task since we aim to predict continuous values (prices).
+
 2. **Data**: 
-   - Sourced from the Kaggle Bluebook for Bulldozers competition: [Kaggle Dataset](https://www.kaggle.com/competitions/bluebook-for-bulldozers/data).
+   - The dataset is sourced from the [Kaggle Bluebook for Bulldozers competition](https://www.kaggle.com/competitions/bluebook-for-bulldozers/data).
+   - The data consists of three main datasets:
+      - Train.csv: Historical data up to the end of 2011, used for training the model.
+      - Valid.csv: Data from January to April 2012, used for validation and leaderboard scoring.
+      - Test.csv: Data from May to November 2012, used for final competition rankings.
+   - These datasets contain numerous features such as product details, machine specifications, usage metrics, and the sale date.
+
 3. **Evaluation**: 
-   - Minimize the Root Mean Squared Log Error (RMSLE) between the predicted and actual auction prices.
-   - RMSLE achieved on the validation set: **0.2467**, which ranks **32nd** out of 474 participants.
+   - The performance metric is **Root Mean Squared Log Error (RMSLE)**, which measures the log-scaled error between predicted and actual prices.
+   - The model achieved an **RMSLE of 0.2467**, ranking **32nd out of 474 participants** in the competition.
 
 ## Dataset
 The dataset contains the following features:
@@ -57,18 +64,26 @@ pip install -r requirements.txt
 - Matplotlib
 
 ## Exploratory Data Analysis (EDA)
-The notebook explores the following aspects of the data:
+In the EDA phase, the notebook focuses on:
 
 - Handling missing values and outliers.
-- Feature distributions and correlation analysis.
-- Visualization of relationships between features like machine age, usage, and the target variable (SalePrice).
+- Visualizing feature distributions and identifying relationships between variables.
+- Investigating machine attributes (e.g., age, usage) and their correlation with the target variable (`SalePrice`).
+- Feature extraction and engineering to optimize model performance (e.g., breaking down `SaleDate` into year, month).
+
+## Preprocessing
+- **Handling Missing Data**: Missing values are addressed using appropriate imputation techniques (e.g., filling with mean/median).
+- **Feature Engineering**: Categorical variables are encoded, and time-related features are extracted from the `SaleDate` column.
+- **DateTime Features**: The `SaleDate` is split into separate year, month, and day features to better capture time-based trends in auction prices.
 
 ## Modeling
 The following machine learning algorithms are used:
-- Random Forest Regressor <br/><br/>
-Hyperparameters are tuned using RandomizedSearchCV and GridSearchCV to find the optimal model configurations. The models are evaluated using the RMSLE score.
+- **Random Forest Regressor**: A robust ensemble method known for its ability to handle large datasets and complex relationships between variables.
+   - **Hyperparameter Tuning**:
+      - Both **RandomizedSearchCV** and **GridSearchCV** were used to find the optimal configuration for the Random Forest model.
+   - **Training and Validation**:
+      - The model was trained on `Train.csv` and validated on `Valid.csv`. The focus was on optimizing model performance through careful feature selection and tuning.
 
 ## Evaluation
-Model performance is evaluated based on:
-- Root Mean Squared Log Error (RMSLE).
-- The final model achieved an RMSLE of 0.2467 on the validation set, which places the project at 32nd out of 474 participants in the Kaggle leaderboard.
+- **Metric**: The model’s performance is evaluated using **RMSLE (Root Mean Squared Log Error)**.
+- The final model achieved an **RMSLE of 0.2467** on the validation set, which places it in the **top 7% of participants** (32nd out of 474) in the Kaggle competition leaderboard.
