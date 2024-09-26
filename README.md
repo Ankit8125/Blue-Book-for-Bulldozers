@@ -37,5 +37,5 @@ This notebook End-to-End Bulldozer-Price-Regression.ipynb details the complete i
 7. Hyperparameter Tuning: Optimize model parameters using techniques like RandomizedSearchCV.
 
 ## Evaluation
-The model performance is measured using Root Mean Squared Log Error (RMSLE), which captures the differences between the actual and predicted auction prices. 
+The model performance is measured using Root Mean Squared Log Error (RMSLE), which captures the differences between the actual and predicted auction prices. <br/>
 RMSLE achieved: 24.67 
