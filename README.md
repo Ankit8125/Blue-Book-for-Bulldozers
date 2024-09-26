@@ -6,8 +6,9 @@ This project aims to predict the auction sale price of heavy equipment (e.g., bu
 2. [Dataset](#dataset)
 3. [Installation](#installation)
 4. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-5. [Modeling](#modeling)
-6. [Evaluation](#evaluation)
+5. [Preprocessing](#preprocessing)
+6. [Modeling](#modeling)
+7. [Evaluation](#evaluation)
 
 ## Project Overview
 The objective of this project is to predict the auction sale price of bulldozers and other heavy machinery at auction using machine learning algorithms. The following approach is used:
