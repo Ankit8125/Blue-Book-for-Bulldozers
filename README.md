@@ -10,6 +10,7 @@ This project aims to predict the auction sale price of heavy equipment (e.g., bu
 6. [Preprocessing](#preprocessing)
 7. [Modeling](#modeling)
 8. [Evaluation](#evaluation)
+9. [Scikit-Learn Workflow](#scikit-learn-workflow)
 
 ## Project Overview
 The objective of this project is to predict the auction sale price of bulldozers and other heavy machinery at auction using machine learning algorithms. The following approach is used:
@@ -89,3 +90,11 @@ The following machine learning algorithms are used:
 ## Evaluation
 - **Metric**: The model’s performance is evaluated using **RMSLE (Root Mean Squared Log Error)**.
 - The final model achieved an **RMSLE of 0.2467** on the validation set, which places it in the **top 7% of participants** (32nd out of 474) in the Kaggle competition leaderboard.
+
+## Scikit-Learn Workflow
+1. Get data ready
+2. Pick a model(to suit your problem)
+3. Fit the model to the data and make a prediction
+4. Evaluate the model
+5. Improve through experimentation
+6. Save and reload your trained model
